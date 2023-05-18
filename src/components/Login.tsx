@@ -40,7 +40,6 @@ export function Login() {
         justifyContent="center"
         alignItems="center"
       >
-        <Avatar bg="teal.500" />
         <Heading color="teal.400">Welcome</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
@@ -56,7 +55,7 @@ export function Login() {
                     pointerEvents="none"
                     children={<CFaUserAlt color="gray.300" />}
                   />
-                  <Input type="email" placeholder="email address" />
+                  <Input type="email" placeholder="Your school email address" />
                 </InputGroup>
               </FormControl>
               <FormControl>

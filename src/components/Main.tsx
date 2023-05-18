@@ -22,20 +22,15 @@ export function Main() {
                     </TabList>
                     <TabPanels>
                       <TabPanel>
-                        Here comes post feed for 'All'
-                        <Post />
-                        {/*<Post /> */}
-                        {/*<Post /> */}
+                        Here comes post feed for 'All' 
                       </TabPanel>
                       <TabPanel>
                         Here comes post feed for 'Hot🔥'
-                        <Post />
                         {/*<Post /> */}
                         {/*<Post /> */}
                       </TabPanel>
                       <TabPanel>
                         Here comes post feed for 'New'
-                        <Post />
                         {/*<Post /> */}
                         {/*<Post /> */}
                       </TabPanel>

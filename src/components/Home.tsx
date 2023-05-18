@@ -8,7 +8,7 @@ export function Home() {
         <Grid
           templateAreas={`"header header"
                           "nav main"`}
-          gridTemplateRows={'100px 1fr 30px'}
+          gridTemplateRows={'100px 1fr'}
           gridTemplateColumns={'25% 2fr'}
           h='100vh'
           gap='1'

@@ -3,7 +3,6 @@ import { Card,
          CardBody, 
          CardFooter, 
          Flex, 
-         Avatar,
          Box,
          Heading,
          Text,
@@ -14,17 +13,14 @@ import { BsThreeDotsVertical  } from "react-icons/bs";
 import { BiUpvote,BiDownvote } from "react-icons/bi";
 import { RxChatBubble, RxShare2 } from "react-icons/rx";
 
-export function Post() {
+export function Post(title: string, text: string) {
     return (
         <Card maxW='md'>
           <CardHeader>
             <Flex gap='4'>
               <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
-                <Avatar name='Segun Adebayo' src='https://bit.ly/sage-adebayo' />
-
                 <Box>
-                  <Heading size='sm'>Segun Adebayo</Heading>
-                  <Text>Creator, Chakra UI</Text>
+                  <Heading size='lg'>{title}</Heading>
                 </Box>
               </Flex>
               <IconButton
@@ -37,9 +33,7 @@ export function Post() {
           </CardHeader>
           <CardBody>
             <Text>
-              With Chakra UI, I wanted to sync the speed of development with the speed
-              of design. I wanted the developer to be just as excited as the designer to
-              create a screen.
+              {text}
             </Text>
           </CardBody>
           <Image
@@ -56,4 +50,4 @@ export function Post() {
           </CardFooter>
         </Card>
     )
-}   
+}

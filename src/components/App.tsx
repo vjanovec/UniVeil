@@ -8,6 +8,8 @@ import { CreatePost } from './CreatePost';
 import { Login } from './Login';
 
 function App() {
+  const handleCreatePostSubmit = (title: string, text: string): void => {
+  }
   return (
     <ChakraProvider>
       <Router>

@@ -1,4 +1,4 @@
-import { Input, Button, GridItem } from '@chakra-ui/react'
+import { Input, Button, Text } from '@chakra-ui/react'
 import { Link, useNavigate } from 'react-router-dom';
 
 export function Header() {
@@ -20,9 +20,12 @@ export function Header() {
     const handleLogin = () => {
       navigate('/login');
     };
+    const handleHome = () => {
+        navigate('/')
+    }
     return (
         <div className="topBar" style={topBarStyle}>
-            <p style={textStyle}>uniBlind</p>
+            <Text style={textStyle} onClick={handleHome}>uniBlind</Text>
             <div style={{ width: '30px' }}></div>
             <Input placeholder='Search' style={searchbarStyle}/>
             <div style={{ width: '30px' }}></div>
