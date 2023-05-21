@@ -1,18 +1,21 @@
 import { Stack, Input, Textarea, Box, Flex, FormControl, Grid, GridItem, Select, Button } from '@chakra-ui/react';
 import { Header } from './Header';
 import { ChangeEvent, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { postSubmit } from '../postsReducer';
 
 
 export function CreatePost() {
-  const [postTitle, setPostTitle] = useState('')
-  const [postText, setPostText] = useState('')
+  const [title, setTitle] = useState('')
+  const [text, setText] = useState('')
   const handleTitleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setPostTitle(event.target.value)
+    setTitle(event.target.value)
   }
   const handleTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    setPostText(event.target.value)
+    setText(event.target.value)
   }
-  const isTitleEmpty = postTitle.trim() === ''
+  const dispatch = useDispatch();
+  const isTitleEmpty = title.trim() === ''
 
   return (
     <Grid
@@ -44,8 +47,8 @@ export function CreatePost() {
           >
             <Stack spacing={0}>
               <FormControl>
-                <Input value={postTitle} placeholder="Title" mb="15px" onChange={handleTitleChange} />
-                <Textarea value={postText} placeholder='Text(Optional)' height="200px" mb="15px" onChange={handleTextChange} />
+                <Input value={title} placeholder="Title" mb="15px" onChange={handleTitleChange} />
+                <Textarea value={text} placeholder='Text(Optional)' height="200px" mb="15px" onChange={handleTextChange} />
               </FormControl>
               <Flex justify="space-between">
                 <Select placeholder='Choose a channel' w='300px'>
@@ -58,7 +61,8 @@ export function CreatePost() {
                   size='md' 
                   w='70px' 
                   bg={isTitleEmpty ? 'gray.400' : 'teal.500'}
-                  disabled={postTitle.trim() === ''}>
+                  disabled={title.trim() === ''}
+                  onClick={() => dispatch(postSubmit(({title, text})))}>
                   Post
                 </Button>
               </Flex>

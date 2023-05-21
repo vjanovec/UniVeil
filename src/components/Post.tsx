@@ -12,8 +12,12 @@ import { Card,
 import { BsThreeDotsVertical  } from "react-icons/bs";
 import { BiUpvote,BiDownvote } from "react-icons/bi";
 import { RxChatBubble, RxShare2 } from "react-icons/rx";
+interface PostProps {
+  title: string;
+  text: string;
+}
 
-export function Post(title: string, text: string) {
+export function Post({title, text}: PostProps) {
     return (
         <Card maxW='md'>
           <CardHeader>
