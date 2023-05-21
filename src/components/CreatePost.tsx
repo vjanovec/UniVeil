@@ -62,6 +62,7 @@ export function CreatePost() {
                   w='70px' 
                   bg={isTitleEmpty ? 'gray.400' : 'teal.500'}
                   disabled={title.trim() === ''}
+                  // If the user clicks the button, it dispatches an action with the payload of the form {title, text}
                   onClick={() => dispatch(postSubmit(({title, text})))}>
                   Post
                 </Button>

@@ -13,6 +13,7 @@ export function Main() {
         justifyContent: 'center',
     };
 
+    // Fetch data of posts(list of objects), so that I can pull the object in the return method below.
     const posts = useSelector((state: {posts: {title: string, text: string}[]}) => state.posts)
     return (
         <div style={tabStyle}>
@@ -26,7 +27,8 @@ export function Main() {
                     <TabPanels>
                       <TabPanel>
                         Here comes post feed for 'All' 
-                        {/* Wrap all the objects in the posts list inside Post component. */}
+
+                        {/* Pull all the objects in the posts(list of objects), then wrap each and every object inside Post component using map function. */}
                         {posts.map((x: {title: string, text: string}) => <Post title={x.title} text={x.text} />)}
                       </TabPanel>
                       <TabPanel>
