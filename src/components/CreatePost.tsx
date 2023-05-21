@@ -3,6 +3,7 @@ import { Header } from './Header';
 import { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postSubmit } from '../postsReducer';
+import { useNavigate } from 'react-router-dom';
 
 
 export function CreatePost() {
@@ -13,6 +14,13 @@ export function CreatePost() {
   }
   const handleTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     setText(event.target.value)
+  }
+  const navigate = useNavigate();
+  const handlePostClick = () => {
+    // If the user clicks the button, it dispatches an action with the payload of the form {title, text}
+    dispatch(postSubmit(({title, text})))
+    // also, it navigates to Main component.
+    navigate('/')
   }
   const dispatch = useDispatch();
   const isTitleEmpty = title.trim() === ''
@@ -62,8 +70,7 @@ export function CreatePost() {
                   w='70px' 
                   bg={isTitleEmpty ? 'gray.400' : 'teal.500'}
                   disabled={title.trim() === ''}
-                  // If the user clicks the button, it dispatches an action with the payload of the form {title, text}
-                  onClick={() => dispatch(postSubmit(({title, text})))}>
+                  onClick={handlePostClick}>
                   Post
                 </Button>
               </Flex>
