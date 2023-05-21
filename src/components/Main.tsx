@@ -1,6 +1,7 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { Post } from './Post';
 import { useSelector } from 'react-redux';
+import { PostType } from '../types/PostType';
 
 export function Main() {
     const tabStyle = {
@@ -14,7 +15,7 @@ export function Main() {
     };
 
     // Fetch data of posts(list of objects), so that I can pull the object in the return method below.
-    const posts = useSelector((state: {posts: {title: string, text: string}[]}) => state.posts)
+    const feed = useSelector((state: {feed: PostType[]}) => state.feed)
     return (
         <div style={tabStyle}>
             <div style={filterOptionBarStyle}>
@@ -29,7 +30,8 @@ export function Main() {
                         Here comes post feed for 'All' 
 
                         {/* Pull all the objects in the posts(list of objects), then wrap each and every object inside Post component using map function. */}
-                        {posts.map((x: {title: string, text: string}) => <Post title={x.title} text={x.text} />)}
+                        {feed.map(x => 
+                        <Post id={x.id} title={x.title} text={x.text} voteCount={x.voteCount}/>)}
                       </TabPanel>
                       <TabPanel>
                         Here comes post feed for 'Hot🔥'

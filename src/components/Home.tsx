@@ -11,7 +11,6 @@ export function Home() {
           gridTemplateRows={'100px 1fr'}
           gridTemplateColumns={'25% 2fr'}
           h='100vh'
-          gap='1'
           color='blackAlpha.700'
           fontWeight='bold'
         >
@@ -21,7 +20,7 @@ export function Home() {
           <GridItem pl='2' bg="gray.100" area={'nav'} px={4} py={4}>
             <Navigation />
           </GridItem>
-          <GridItem pl='2' area={'main'}>
+          <GridItem pl='2' bg="gray.100" area={'main'}>
             <Main />
           </GridItem>
         </Grid>

@@ -2,8 +2,9 @@ import { Stack, Input, Textarea, Box, Flex, FormControl, Grid, GridItem, Select,
 import { Header } from './Header';
 import { ChangeEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { postSubmit } from '../postsReducer';
+import { postSubmit } from '../features/feedSlice';
 import { useNavigate } from 'react-router-dom';
+import { nanoid } from '@reduxjs/toolkit';
 
 
 export function CreatePost() {
@@ -17,10 +18,22 @@ export function CreatePost() {
   }
   const navigate = useNavigate();
   const handlePostClick = () => {
-    // If the user clicks the button, it dispatches an action with the payload of the form {title, text}
-    dispatch(postSubmit(({title, text})))
-    // also, it navigates to Main component.
-    navigate('/')
+    if (title) {
+      // If the user clicks the button, it dispatches an action with the payload of the form {title, text}
+      dispatch(
+        postSubmit(
+          ({id: nanoid(),
+            title,
+              text,
+              voteCount: 0
+            })
+        )
+      )
+      setTitle('');
+      setText('');
+      // also, it navigates to Main component.
+      navigate('/')
+    }
   }
   const dispatch = useDispatch();
   const isTitleEmpty = title.trim() === ''

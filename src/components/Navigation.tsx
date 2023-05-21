@@ -7,9 +7,10 @@ import { Link, useNavigate } from 'react-router-dom';
 export function Navigation() {
     const containerStyle: CSSProperties = {
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'flex-end',
         alignItems: 'center',
         flexDirection: 'column',
+        position: 'relative',
       };
     const navigate = useNavigate();
     const handleCreatePost = () => {
@@ -23,7 +24,7 @@ export function Navigation() {
                     Create post
                 </Button>
             </Link>
-            <Divider height='2px' bg='gray.300' my='5' />
+            <Divider borderWidth='1px' borderColor='gray' my='5' />
             <div>
                 <NavButton name="General" />
                 <NavButton name="Courses" />
@@ -31,6 +32,8 @@ export function Navigation() {
                 <NavButton name="Tools" />
                 <NavButton name="Career" />
             </div>
+            {/* TODO: Vertical divider not rendered!!! */}
+            <Divider borderWidth='1px' borderColor='red' my='5' orientation="vertical" />
         </div>
     )
 }
