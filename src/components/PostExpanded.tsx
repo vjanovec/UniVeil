@@ -1,0 +1,44 @@
+import { Box, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import { Header } from "./Header";
+import { Navigation } from "./Navigation";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { PostType } from "../types/PostType";
+import { FeedType } from "../types/FeedType";
+
+export function PostExpanded() {
+  const { postId } = useParams<{ postId: string }>();
+
+  const targetPost = useSelector((state: FeedType) =>
+    state.feed.find(post => post.postId === postId)
+  )
+
+  // Render the page only if targetPost exists
+  if (!targetPost) {
+    return <div>Loading...</div>;
+  }
+  return (
+    <Grid
+      templateAreas={`"header header"
+                      "nav main"`}
+      gridTemplateRows={'100px 1fr'}
+      gridTemplateColumns={'25% 2fr'}
+      h='100vh'
+      color='blackAlpha.700'
+      fontWeight='bold'
+    >
+      <GridItem pl='2' area={'header'}>
+        <Header />
+      </GridItem>
+      <GridItem pl='2' bg="gray.100" area={'nav'} px={4} py={4}>
+        <Navigation />
+      </GridItem>
+      <GridItem pl='2' bg="gray.100" area={'main'}>
+        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+          <Heading>{targetPost.title}</Heading>
+          <Text>{targetPost.text}</Text>
+        </Box>
+      </GridItem>
+    </Grid>
+  );
+}

@@ -1,5 +1,5 @@
 export type PostType = {
-    id: string,
+    postId: string,
     title: string,
     text: string,
     voteCount: number

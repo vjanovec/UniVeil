@@ -22,7 +22,7 @@ export function CreatePost() {
       // If the user clicks the button, it dispatches an action with the payload of the form {title, text}
       dispatch(
         postSubmit(
-          ({id: nanoid(),
+          ({postId: nanoid(),
             title,
               text,
               voteCount: 0

@@ -15,18 +15,19 @@ import { RxChatBubble, RxShare2 } from "react-icons/rx";
 import { useDispatch } from 'react-redux';
 import { PostType } from '../types/PostType';
 import { downvote, upvote } from '../features/feedSlice';
+import { Link } from 'react-router-dom';
 
-export function Post({id, title, text, voteCount}: PostType) {
+export function Post({postId, title, text, voteCount}: PostType) {
   const dispatch = useDispatch();
   const handleUpvote = () => {
-    dispatch(upvote({postId: id}))
+    dispatch(upvote({postId: postId}))
   }
   const handleDownvote = () => {
-    dispatch(downvote({postId: id}))
+    dispatch(downvote({postId: postId}))
   }
 
   return (
-      <Card maxW='md' marginBottom={'20px'}>
+      <Card maxW='md' marginBottom={'20px'} width={'40vw'}>
         <CardHeader>
           <Flex gap='4'>
             <Flex flex='1' gap='4' alignItems='center' flexWrap='wrap'>
@@ -52,7 +53,9 @@ export function Post({id, title, text, voteCount}: PostType) {
           <Button flex='1' variant='ghost' leftIcon={<BiUpvote />} onClick={handleUpvote}></Button>
           {voteCount}
           <Button flex='1' variant='ghost' leftIcon={<BiDownvote />} onClick={handleDownvote}></Button>
+          <Link to={`/posts/${postId}`}>
           <Button flex='1' variant='ghost' leftIcon={<RxChatBubble />}></Button>
+          </Link>
           <Button flex='1' variant='ghost' leftIcon={<RxShare2 />}></Button>
         </CardFooter>
       </Card>

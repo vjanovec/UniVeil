@@ -15,14 +15,14 @@ const feedSlice = createSlice({
         },
         upvote: (state, action) => {
             const {postId} = action.payload;
-            const existingPost = state.find(post => post.id === postId)
+            const existingPost = state.find(post => post.postId === postId)
             if (existingPost) {
                 existingPost.voteCount += 1
             }
         },
         downvote: (state, action) => {
             const {postId} = action.payload;
-            const existingPost = state.find(post => post.id === postId)
+            const existingPost = state.find(post => post.postId === postId)
             if (existingPost) {
                 existingPost.voteCount -= 1
             }
