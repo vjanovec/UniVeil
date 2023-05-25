@@ -13,15 +13,16 @@ import {
   FormHelperText,
   InputRightElement
 } from "@chakra-ui/react";
-import { FaUserAlt, FaLock, FaKey } from "react-icons/fa";
+import { FaUserAlt, FaLock, FaKey, FaGhost } from "react-icons/fa";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 const CFaKey = chakra(FaKey);
+const CFaGhost = chakra(FaGhost);
 
 export function SignUp() {
   const [email, setEmail] = useState('');
-  const [code, setCode] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -42,7 +43,24 @@ export function SignUp() {
     //TODO: After clicking the button, set 3 min timer.
   }
   const handleShowClick = () => setShowPassword(!showPassword);
+  const handleCheckCode = () => {
+    /* TODO:
+      if (generatedCode === user input code) {
+        renders
+        <InputRightElement>
+          "Code matches" in green colour
+        </InputRightElement>
+      } else {
+        renders
+        <InputRightElement>
+          "Wrong code" in red colour
+        </InputRightElement>
+      }
+    */
+  }
   const handleSignUp = async() => {
+    // TODO: dispatch login action to the userSlice.
+    // TODO: add user info to firebase database
   }
 
 
@@ -110,7 +128,7 @@ export function SignUp() {
                   <Button
                     h="1.75rem"
                     size="sm"
-                    onClick={handleSendCode}
+                    onClick={handleCheckCode}
                     textAlign="center"
                     ml={2}
                     alignSelf="center"
@@ -121,6 +139,33 @@ export function SignUp() {
               </FormControl>
               :
               null}
+
+              {/* Username input area */}
+              <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    color="gray.300"
+                    children={<CFaGhost color="gray.300" />}
+                  />
+                  <Input
+                    type="Username"
+                    onChange={(e) => setUsername(e.target.value)}
+                    placeholder="Username"
+                  />
+                  {/* 
+                    (check if existing username)
+                    ?  <InputRightElement>
+                         "Username not available" in red colour
+                       </InputRightElement>
+                    :  <InputRightElement>
+                         "Username available!" in green colour
+                       </InputRightElement>
+                  */}
+                </InputGroup>
+                <FormHelperText textAlign="right">
+                </FormHelperText>
+              </FormControl>
 
               {/* Password input area */}
               <FormControl>
