@@ -29,11 +29,9 @@ export function Header() {
             <div style={{ width: '30px' }}></div>
             <Input placeholder='Search' style={searchbarStyle}/>
             <div style={{ width: '30px' }}></div>
-            <Link to={'/login'}>
-                <Button colorScheme='teal' variant='outline' onClick={handleLogin}>
-                    Login
-                </Button>
-            </Link>
+            <Button colorScheme='teal' variant='outline' onClick={handleLogin}>
+                Login
+            </Button>
         </div>
     )
 }

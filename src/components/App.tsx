@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { CreatePost } from './CreatePost';
 import { Login } from './Login';
 import { PostExpanded } from './PostExpanded';
+import { SignUp } from './SignUp';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/create-post" element={<CreatePost />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
           <Route path="/posts/:postId" element={<PostExpanded />} />
         </Routes>
       </Router>

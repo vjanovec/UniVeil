@@ -1,9 +1,8 @@
-import { Box, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
+import { Box, Container, Grid, GridItem, Heading, Text } from "@chakra-ui/react";
 import { Header } from "./Header";
 import { Navigation } from "./Navigation";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { PostType } from "../types/PostType";
 import { FeedType } from "../types/FeedType";
 
 export function PostExpanded() {
@@ -34,10 +33,10 @@ export function PostExpanded() {
         <Navigation />
       </GridItem>
       <GridItem pl='2' bg="gray.100" area={'main'}>
-        <Box maxW='sm' borderWidth='1px' borderRadius='lg' overflow='hidden'>
+        <Container padding='4' bg='white' border='2px solid' mt='24'>
           <Heading>{targetPost.title}</Heading>
-          <Text>{targetPost.text}</Text>
-        </Box>
+          <p>{targetPost.text}</p>
+        </Container>
       </GridItem>
     </Grid>
   );

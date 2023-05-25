@@ -9,25 +9,40 @@ import {
   InputLeftElement,
   chakra,
   Box,
-  Avatar,
   FormControl,
   FormHelperText,
   InputRightElement
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 
-export function Login() {
+export function SignUp() {
+  const [email, setEmail] = useState('');
+  const [code, setCode] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [isCodeSent, setIsCodeSent] = useState(false);
 
-  const handleShowClick = () => setShowPassword(!showPassword);
-  const navigate = useNavigate();
-  const handleSignUp = () => {
-    navigate('/sign-up')
+  const handleSendCode = () => {
+    try {
+      if (!email.endsWith("@ed.ac.uk")) {
+        setError('Please enter a valid school email address.');
+      } else {
+        setIsCodeSent(true)
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+    // TODO: Send verification code to the email address.
+    //TODO: After clicking the button, set 3 min timer.
   }
+  const handleShowClick = () => setShowPassword(!showPassword);
+  const handleSignUp = async() => {
+  }
+
 
   return (
     <Flex
@@ -59,7 +74,20 @@ export function Login() {
                     pointerEvents="none"
                     children={<CFaUserAlt color="gray.300" />}
                   />
-                  <Input type="email" placeholder="Your school email address" />
+                  <Input 
+                  type="email" 
+                  onChange={(e) => setEmail(e.target.value)} 
+                  placeholder="Your school email address" />
+                  <Button
+                    h="1.75rem"
+                    size="sm"
+                    onClick={handleSendCode}
+                    textAlign="center"
+                    ml={2}
+                    alignSelf="center"
+                  >
+                      {isCodeSent ? "Send again" : "Send code"}
+                  </Button>
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -71,6 +99,7 @@ export function Login() {
                   />
                   <Input
                     type={showPassword ? "text" : "password"}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Password"
                   />
                   <InputRightElement width="4.5rem">
@@ -80,7 +109,6 @@ export function Login() {
                   </InputRightElement>
                 </InputGroup>
                 <FormHelperText textAlign="right">
-                  {/* <Link>forgot password?</Link> */}
                 </FormHelperText>
               </FormControl>
               <Button
@@ -89,19 +117,14 @@ export function Login() {
                 variant="solid"
                 colorScheme="teal"
                 width="full"
+                onClick={handleSignUp}
               >
-                Login
+                Sign up!
               </Button>
             </Stack>
           </form>
         </Box>
       </Stack>
-      <Box>
-        New to us?{" "}
-        <Link to="/sign-up" color="teal">
-          Sign Up
-        </Link>
-      </Box>
     </Flex>
   );
 };
