@@ -13,10 +13,11 @@ import {
   FormHelperText,
   InputRightElement
 } from "@chakra-ui/react";
-import { FaUserAlt, FaLock } from "react-icons/fa";
+import { FaUserAlt, FaLock, FaKey } from "react-icons/fa";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
+const CFaKey = chakra(FaKey);
 
 export function SignUp() {
   const [email, setEmail] = useState('');
@@ -30,6 +31,7 @@ export function SignUp() {
     try {
       if (!email.endsWith("@ed.ac.uk")) {
         setError('Please enter a valid school email address.');
+        alert('Please enter a valid school email address.')
       } else {
         setIsCodeSent(true)
       }
@@ -59,7 +61,7 @@ export function SignUp() {
         justifyContent="center"
         alignItems="center"
       >
-        <Heading color="teal.400">Welcome</Heading>
+        <Heading color="teal.400">Sign up</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
             <Stack
@@ -68,6 +70,7 @@ export function SignUp() {
               backgroundColor="whiteAlpha.900"
               boxShadow="md"
             >
+              {/* Email address area */}
               <FormControl>
                 <InputGroup>
                   <InputLeftElement
@@ -90,6 +93,36 @@ export function SignUp() {
                   </Button>
                 </InputGroup>
               </FormControl>
+
+              {/* 'Check if code matches' area */}
+              {isCodeSent
+              ?
+              <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={<CFaKey color="gray.300" />}
+                  />
+                  <Input 
+                  type="email" 
+                  onChange={(e) => setEmail(e.target.value)} 
+                  placeholder="Enter the code sent to your email" />
+                  <Button
+                    h="1.75rem"
+                    size="sm"
+                    onClick={handleSendCode}
+                    textAlign="center"
+                    ml={2}
+                    alignSelf="center"
+                  >
+                      Check
+                  </Button>
+                </InputGroup>
+              </FormControl>
+              :
+              null}
+
+              {/* Password input area */}
               <FormControl>
                 <InputGroup>
                   <InputLeftElement
@@ -119,7 +152,7 @@ export function SignUp() {
                 width="full"
                 onClick={handleSignUp}
               >
-                Sign up!
+                Join
               </Button>
             </Stack>
           </form>
