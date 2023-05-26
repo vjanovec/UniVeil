@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Flex,
   Heading,
@@ -14,6 +13,14 @@ import {
   InputRightElement
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock, FaKey, FaGhost } from "react-icons/fa";
+
+import { useState } from "react";
+import firebase from 'firebase/app';
+import { auth } from "../firebase";
+import {
+  createUserWithEmailAndPassword, 
+  sendEmailVerification,
+} from 'firebase/auth';
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -40,6 +47,14 @@ export function SignUp() {
       setError(error.message);
     }
     // TODO: Send verification code to the email address.
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential)=>{
+          // send verification mail.
+        sendEmailVerification(auth.currentUser);
+        auth.signOut();
+        alert("Email sent");
+      })
+      .catch(alert);
     //TODO: After clicking the button, set 3 min timer.
   }
   const handleShowClick = () => setShowPassword(!showPassword);
