@@ -36,25 +36,29 @@ export function SignUp() {
   const [isCodeSent, setIsCodeSent] = useState(false);
 
   const handleSendCode = () => {
-    try {
-      if (!email.endsWith("@ed.ac.uk")) {
-        setError('Please enter a valid school email address.');
-        alert('Please enter a valid school email address.')
-      } else {
-        setIsCodeSent(true)
-      }
-    } catch (error) {
-      setError(error.message);
+    console.log('aaaaaaaaaa')
+    if (!email.endsWith("@ed.ac.uk")) {
+      setError('Please enter a valid school email address.');
+      alert('Please enter a valid school email address.')
+    } else {
+      setIsCodeSent(true)
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          // ...
+          console.log(user)
+          sendEmailVerification(auth.currentUser)
+          console.log('Email verification sent!')
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          // ..
+        })
     }
-    // TODO: Send verification code to the email address.
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential)=>{
-          // send verification mail.
-        sendEmailVerification(auth.currentUser);
-        auth.signOut();
-        alert("Email sent");
-      })
-      .catch(alert);
     //TODO: After clicking the button, set 3 min timer.
   }
   const handleShowClick = () => setShowPassword(!showPassword);
