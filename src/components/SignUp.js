@@ -34,6 +34,7 @@ export function SignUp() {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isCodeSent, setIsCodeSent] = useState(false);
+  const isFilled = (email !== '') && (username !== '') && (password !== '');
 
   const handleSendCode = () => {
     console.log('aaaaaaaaaa')
@@ -118,46 +119,8 @@ export function SignUp() {
                   type="email" 
                   onChange={(e) => setEmail(e.target.value)} 
                   placeholder="Your school email address" />
-                  <Button
-                    h="1.75rem"
-                    size="sm"
-                    onClick={handleSendCode}
-                    textAlign="center"
-                    ml={2}
-                    alignSelf="center"
-                  >
-                      {isCodeSent ? "Send again" : "Send code"}
-                  </Button>
                 </InputGroup>
               </FormControl>
-
-              {/* 'Check if code matches' area */}
-              {isCodeSent
-              ?
-              <FormControl>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"
-                    children={<CFaKey color="gray.300" />}
-                  />
-                  <Input 
-                  type="email" 
-                  onChange={(e) => setEmail(e.target.value)} 
-                  placeholder="Enter the code sent to your email" />
-                  <Button
-                    h="1.75rem"
-                    size="sm"
-                    onClick={handleCheckCode}
-                    textAlign="center"
-                    ml={2}
-                    alignSelf="center"
-                  >
-                      Check
-                  </Button>
-                </InputGroup>
-              </FormControl>
-              :
-              null}
 
               {/* Username input area */}
               <FormControl>
@@ -208,6 +171,48 @@ export function SignUp() {
                 <FormHelperText textAlign="right">
                 </FormHelperText>
               </FormControl>
+
+              {/* Send code button */}
+              <Button
+                    h="1.75rem"
+                    width="full"
+                    onClick={handleSendCode}
+                    textAlign="center"
+                    alignSelf="center"
+                    isDisabled={isFilled ? false : true}
+                  >
+                      {isCodeSent ? "Send again" : "Send code"}
+              </Button>
+
+              {/* 'Check if code matches' area */}
+              {isCodeSent
+              ?
+              <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={<CFaKey color="gray.300" />}
+                  />
+                  <Input 
+                  type="email" 
+                  onChange={(e) => setEmail(e.target.value)} 
+                  placeholder="Enter the code sent to your email" />
+                  <Button
+                    h="1.75rem"
+                    size="sm"
+                    onClick={handleCheckCode}
+                    textAlign="center"
+                    ml={2}
+                    alignSelf="center"
+                  >
+                      Check
+                  </Button>
+                </InputGroup>
+              </FormControl>
+              :
+              null}
+
+              {/* Join button */}
               <Button
                 borderRadius={0}
                 type="submit"
