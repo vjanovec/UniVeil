@@ -1,5 +1,6 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
 import { Feed } from './Feed';
+import React from 'react';
 
 export function Main() {
     const tabStyle = {

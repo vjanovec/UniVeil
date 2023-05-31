@@ -16,6 +16,7 @@ import { useDispatch } from 'react-redux';
 import { PostType } from '../types/PostType';
 import { downvote, upvote } from '../features/feedSlice';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 export function Post({postId, title, text, voteCount}: PostType) {
   const dispatch = useDispatch();

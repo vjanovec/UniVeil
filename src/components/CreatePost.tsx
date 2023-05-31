@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { postSubmit } from '../features/feedSlice';
 import { useNavigate } from 'react-router-dom';
 import { nanoid } from '@reduxjs/toolkit';
+import React from 'react';
 
 
 export function CreatePost() {

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { PostType } from "../types/PostType"
 import { Post } from "./Post"
+import React from "react"
 
 export function Feed() {
     const feed = useSelector((state: {feed: PostType[]}) => state.feed)

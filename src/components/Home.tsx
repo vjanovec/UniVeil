@@ -2,6 +2,7 @@ import { Grid, GridItem } from '@chakra-ui/react'
 import { Header } from "./Header";
 import { Main } from "./Main";
 import { Navigation } from './Navigation';
+import React from 'react';
 
 export function Home() {
     return (
