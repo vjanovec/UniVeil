@@ -5,11 +5,13 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import feedReducer from './features/feedSlice';
+import feedReducer from './redux/feedSlice';
+import userReducer from './redux/userSlice';
 
 const store = configureStore({
   reducer: {
-    feed: feedReducer
+    feed: feedReducer,
+    user: userReducer,
   }
 });
 
