@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Flex,
   Heading,
@@ -15,6 +14,14 @@ import {
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock, FaKey, FaGhost } from "react-icons/fa";
 
+import { useState } from "react";
+import firebase from 'firebase/app';
+import { auth } from "../firebase";
+import {
+  createUserWithEmailAndPassword, 
+  sendEmailVerification,
+} from 'firebase/auth';
+
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
 const CFaKey = chakra(FaKey);
@@ -27,19 +34,32 @@ export function SignUp() {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isCodeSent, setIsCodeSent] = useState(false);
+  const isFilled = (email !== '') && (username !== '') && (password !== '');
 
   const handleSendCode = () => {
-    try {
-      if (!email.endsWith("@ed.ac.uk")) {
-        setError('Please enter a valid school email address.');
-        alert('Please enter a valid school email address.')
-      } else {
-        setIsCodeSent(true)
-      }
-    } catch (error) {
-      setError(error.message);
+    console.log('aaaaaaaaaa')
+    if (!email.endsWith("@ed.ac.uk")) {
+      setError('Please enter a valid school email address.');
+      alert('Please enter a valid school email address.')
+    } else {
+      setIsCodeSent(true)
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in 
+          const user = userCredential.user;
+          // ...
+          console.log(user)
+          sendEmailVerification(auth.currentUser)
+          console.log('Email verification sent!')
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode);
+          console.log(errorMessage);
+          // ..
+        })
     }
-    // TODO: Send verification code to the email address.
     //TODO: After clicking the button, set 3 min timer.
   }
   const handleShowClick = () => setShowPassword(!showPassword);
@@ -99,46 +119,8 @@ export function SignUp() {
                   type="email" 
                   onChange={(e) => setEmail(e.target.value)} 
                   placeholder="Your school email address" />
-                  <Button
-                    h="1.75rem"
-                    size="sm"
-                    onClick={handleSendCode}
-                    textAlign="center"
-                    ml={2}
-                    alignSelf="center"
-                  >
-                      {isCodeSent ? "Send again" : "Send code"}
-                  </Button>
                 </InputGroup>
               </FormControl>
-
-              {/* 'Check if code matches' area */}
-              {isCodeSent
-              ?
-              <FormControl>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"
-                    children={<CFaKey color="gray.300" />}
-                  />
-                  <Input 
-                  type="email" 
-                  onChange={(e) => setEmail(e.target.value)} 
-                  placeholder="Enter the code sent to your email" />
-                  <Button
-                    h="1.75rem"
-                    size="sm"
-                    onClick={handleCheckCode}
-                    textAlign="center"
-                    ml={2}
-                    alignSelf="center"
-                  >
-                      Check
-                  </Button>
-                </InputGroup>
-              </FormControl>
-              :
-              null}
 
               {/* Username input area */}
               <FormControl>
@@ -189,6 +171,48 @@ export function SignUp() {
                 <FormHelperText textAlign="right">
                 </FormHelperText>
               </FormControl>
+
+              {/* Send code button */}
+              <Button
+                    h="1.75rem"
+                    width="full"
+                    onClick={handleSendCode}
+                    textAlign="center"
+                    alignSelf="center"
+                    isDisabled={isFilled ? false : true}
+                  >
+                      {isCodeSent ? "Send again" : "Send code"}
+              </Button>
+
+              {/* 'Check if code matches' area */}
+              {isCodeSent
+              ?
+              <FormControl>
+                <InputGroup>
+                  <InputLeftElement
+                    pointerEvents="none"
+                    children={<CFaKey color="gray.300" />}
+                  />
+                  <Input 
+                  type="email" 
+                  onChange={(e) => setEmail(e.target.value)} 
+                  placeholder="Enter the code sent to your email" />
+                  <Button
+                    h="1.75rem"
+                    size="sm"
+                    onClick={handleCheckCode}
+                    textAlign="center"
+                    ml={2}
+                    alignSelf="center"
+                  >
+                      Check
+                  </Button>
+                </InputGroup>
+              </FormControl>
+              :
+              null}
+
+              {/* Join button */}
               <Button
                 borderRadius={0}
                 type="submit"
