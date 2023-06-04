@@ -1,0 +1,41 @@
+[debug] [2023-06-04T06:15:08.905Z] ----------------------------------------------------------------------
+[debug] [2023-06-04T06:15:08.908Z] Command:       /opt/homebrew/Cellar/node/19.6.1/bin/node /opt/homebrew/bin/firebase emulators:start --only auth
+[debug] [2023-06-04T06:15:08.908Z] CLI Version:   12.3.0
+[debug] [2023-06-04T06:15:08.909Z] Platform:      darwin
+[debug] [2023-06-04T06:15:08.909Z] Node Version:  v19.6.1
+[debug] [2023-06-04T06:15:08.909Z] Time:          Sun Jun 04 2023 15:15:08 GMT+0900 (Korean Standard Time)
+[debug] [2023-06-04T06:15:08.909Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-04T06:15:08.979Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-04T06:15:08.980Z] > authorizing via signed-in user (hjae.ubermensch@gmail.com)
+[info] i  emulators: Starting emulators: auth {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth"}}
+[debug] [2023-06-04T06:15:09.590Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-04T06:15:09.590Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-04T06:15:09.590Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-06-04T06:15:09.598Z] [hub] writing locator at /var/folders/62/8cm9kgnd61s8jx3ywhbdfj3c0000gn/T/hub-unihood-20eb2.json
+[debug] [2023-06-04T06:15:14.205Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-06-04T06:15:14.205Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-06-04T06:15:14.205Z] Starting Emulator UI with command {"binary":"node","args":["/Users/ihyeonjae/.cache/firebase/emulators/ui-v1.11.6/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/ihyeonjae/.cache/firebase/emulators/ui-v1.11.6/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-06-04T06:15:14.309Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-06-04T06:15:14.310Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI        │
+├────────────────┼────────────────┼────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth │
+└────────────────┴────────────────┴────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[warn] ⚠  canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web. {"metadata":{"emulator":{"name":"auth"},"message":"canHandleCodeInApp is unsupported in Auth Emulator. All OOB operations will complete via web."}}
+[info] i  To sign in as s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=eLGHJXn--lCgNmDWVX47rQbD29sezqCZGA5zP26jSkBh83U3Sim1Na&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000%2F {"metadata":{"emulator":{"name":"auth"},"message":"To sign in as s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=signIn&lang=en&oobCode=eLGHJXn--lCgNmDWVX47rQbD29sezqCZGA5zP26jSkBh83U3Sim1Na&apiKey=fake-api-key&continueUrl=http%3A%2F%2Flocalhost%3A3000%2F"}}

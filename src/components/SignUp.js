@@ -21,6 +21,10 @@ import {
   createUserWithEmailAndPassword, 
   sendEmailVerification,
 } from 'firebase/auth';
+import sendEmailLink from "../features/sendEmailLink";
+import confirmEmailLink from "../features/confirmEmailLink";
+import { login } from "../features/authSlice";
+import { useDispatch } from "react-redux";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -35,9 +39,9 @@ export function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [isCodeSent, setIsCodeSent] = useState(false);
   const isFilled = (email !== '') && (username !== '') && (password !== '');
+  const dispatch = useDispatch();
 
   const handleSendCode = () => {
-    console.log('aaaaaaaaaa')
     if (!email.endsWith("@ed.ac.uk")) {
       setError('Please enter a valid school email address.');
       alert('Please enter a valid school email address.')
@@ -78,8 +82,16 @@ export function SignUp() {
       }
     */
   }
-  const handleSignUp = async() => {
-    // TODO: dispatch login action to the userSlice.
+  const handleJoinClick = async() => {
+    sendEmailLink(email);
+    confirmEmailLink();
+    // TODO: dispatch login action to the authSlice.
+    dispatch(login({
+      email: email,
+      username: username,
+      password: password,
+      })
+    )
     // TODO: add user info to firebase database
   }
 
@@ -219,7 +231,7 @@ export function SignUp() {
                 variant="solid"
                 colorScheme="teal"
                 width="full"
-                onClick={handleSignUp}
+                onClick={handleJoinClick}
               >
                 Join
               </Button>
