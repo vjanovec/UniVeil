@@ -20,6 +20,7 @@ import { auth } from "../firebase";
 import {
   createUserWithEmailAndPassword, 
   sendEmailVerification,
+  updateProfile,
 } from 'firebase/auth';
 
 const CFaUserAlt = chakra(FaUserAlt);
@@ -47,9 +48,12 @@ export function SignUp() {
         .then((userCredential) => {
           // Signed in 
           const user = userCredential.user;
-          // ...
           console.log(user)
           sendEmailVerification(auth.currentUser)
+          // Add username to the user profile
+          updateProfile(auth.currentUser, {
+            displayName: username
+          })
           console.log('Email verification sent!')
         })
         .catch((error) => {
