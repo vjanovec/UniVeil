@@ -40,7 +40,7 @@ export function SignUp() {
   const isFilled = (email !== '') && (username !== '') && (password !== '');
   const dispatch = useDispatch();
 
-  const handleSendCode = () => {
+  const handleJoinClick = () => {
     console.log('aaaaaaaaaa')
     if (!email.endsWith("@ed.ac.uk")) {
       setError('Please enter a valid school email address.');
@@ -53,26 +53,6 @@ export function SignUp() {
     //TODO: After clicking the button, set 3 min timer.
   }
   const handleShowClick = () => setShowPassword(!showPassword);
-  const handleCheckCode = () => {
-    /* TODO:
-      if (generatedCode === user input code) {
-        renders
-        <InputRightElement>
-          "Code matches" in green colour
-        </InputRightElement>
-      } else {
-        renders
-        <InputRightElement>
-          "Wrong code" in red colour
-        </InputRightElement>
-      }
-    */
-  }
-  const handleSignUp = async() => {
-    // TODO: dispatch login action to the userSlice.
-    // TODO: add user info to firebase database
-  }
-
 
   return (
     <Flex
@@ -126,6 +106,7 @@ export function SignUp() {
                     placeholder="Username"
                   />
                   {/* 
+                  TODO:
                     (check if existing username)
                     ?  <InputRightElement>
                          "Username not available" in red colour
@@ -162,46 +143,6 @@ export function SignUp() {
                 </FormHelperText>
               </FormControl>
 
-              {/* Send code button */}
-              <Button
-                    h="1.75rem"
-                    width="full"
-                    onClick={handleSendCode}
-                    textAlign="center"
-                    alignSelf="center"
-                    isDisabled={isFilled ? false : true}
-                  >
-                      {isCodeSent ? "Send again" : "Send code"}
-              </Button>
-
-              {/* 'Check if code matches' area */}
-              {isCodeSent
-              ?
-              <FormControl>
-                <InputGroup>
-                  <InputLeftElement
-                    pointerEvents="none"
-                    children={<CFaKey color="gray.300" />}
-                  />
-                  <Input 
-                  type="email" 
-                  onChange={(e) => setEmail(e.target.value)} 
-                  placeholder="Enter the code sent to your email" />
-                  <Button
-                    h="1.75rem"
-                    size="sm"
-                    onClick={handleCheckCode}
-                    textAlign="center"
-                    ml={2}
-                    alignSelf="center"
-                  >
-                      Check
-                  </Button>
-                </InputGroup>
-              </FormControl>
-              :
-              null}
-
               {/* Join button */}
               <Button
                 borderRadius={0}
@@ -209,7 +150,8 @@ export function SignUp() {
                 variant="solid"
                 colorScheme="teal"
                 width="full"
-                onClick={handleSignUp}
+                isDisabled={isFilled ? false : true}
+                onClick={handleJoinClick}
               >
                 Join
               </Button>
