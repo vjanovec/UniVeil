@@ -22,6 +22,8 @@ import {
   sendEmailVerification,
   updateProfile,
 } from 'firebase/auth';
+import { signUp } from "../redux/userSlice";
+import { useDispatch } from "react-redux";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -36,6 +38,7 @@ export function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
   const [isCodeSent, setIsCodeSent] = useState(false);
   const isFilled = (email !== '') && (username !== '') && (password !== '');
+  const dispatch = useDispatch();
 
   const handleSendCode = () => {
     console.log('aaaaaaaaaa')
@@ -43,26 +46,9 @@ export function SignUp() {
       setError('Please enter a valid school email address.');
       alert('Please enter a valid school email address.')
     } else {
+      // Given email is school email address
       setIsCodeSent(true)
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in 
-          const user = userCredential.user;
-          console.log(user)
-          sendEmailVerification(auth.currentUser)
-          // Add username to the user profile
-          updateProfile(auth.currentUser, {
-            displayName: username
-          })
-          console.log('Email verification sent!')
-        })
-        .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          console.log(errorCode);
-          console.log(errorMessage);
-          // ..
-        })
+      dispatch(signUp(email, username, password));
     }
     //TODO: After clicking the button, set 3 min timer.
   }

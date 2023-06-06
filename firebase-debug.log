@@ -81,3 +81,54 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
  
 [info] i  To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=zBUaqCTNxI0QivIWUVWHU_Z4q15HL81tqkpQ6ONLRcaWMur4IGwgLB&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=zBUaqCTNxI0QivIWUVWHU_Z4q15HL81tqkpQ6ONLRcaWMur4IGwgLB&apiKey=fake-api-key"}}
 [info] i  To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=rzHkF8gXg-vL_YYqINJNg3meBsMA280nRKL8UiJjaWo81IDXR1cEB3&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=rzHkF8gXg-vL_YYqINJNg3meBsMA280nRKL8UiJjaWo81IDXR1cEB3&apiKey=fake-api-key"}}
+[debug] [2023-06-06T07:24:56.260Z] ----------------------------------------------------------------------
+[debug] [2023-06-06T07:24:56.262Z] Command:       /opt/homebrew/Cellar/node/19.6.1/bin/node /opt/homebrew/bin/firebase emulators:start --only auth
+[debug] [2023-06-06T07:24:56.263Z] CLI Version:   12.3.0
+[debug] [2023-06-06T07:24:56.263Z] Platform:      darwin
+[debug] [2023-06-06T07:24:56.263Z] Node Version:  v19.6.1
+[debug] [2023-06-06T07:24:56.263Z] Time:          Tue Jun 06 2023 16:24:56 GMT+0900 (Korean Standard Time)
+[debug] [2023-06-06T07:24:56.263Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-06T07:24:56.265Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-06-06T07:24:56.335Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-06T07:24:56.335Z] > authorizing via signed-in user (hjae.ubermensch@gmail.com)
+[info] i  emulators: Starting emulators: auth {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth"}}
+[debug] [2023-06-06T07:24:56.989Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-06T07:24:56.990Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2023-06-06T07:24:56.990Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2023-06-06T07:24:56.998Z] [hub] writing locator at /var/folders/62/8cm9kgnd61s8jx3ywhbdfj3c0000gn/T/hub-unihood-20eb2.json
+[debug] [2023-06-06T07:25:01.837Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2023-06-06T07:25:01.837Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2023-06-06T07:25:01.837Z] Starting Emulator UI with command {"binary":"node","args":["/Users/ihyeonjae/.cache/firebase/emulators/ui-v1.11.6/server/server.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/ihyeonjae/.cache/firebase/emulators/ui-v1.11.6/server/server.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2023-06-06T07:25:01.963Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2023-06-06T07:25:01.963Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬────────────────┬────────────────────────────┐
+│ Emulator       │ Host:Port      │ View in Emulator UI        │
+├────────────────┼────────────────┼────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099 │ http://127.0.0.1:4000/auth │
+└────────────────┴────────────────┴────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2023-06-06T07:25:02.224Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-06-06T07:25:02.224Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[info] i  To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=zTqQHYv0Kr3cFSAA0J-GkPPq7iZcPIHBg0DVGNOiJVtQdu-ySu2uJ5&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=zTqQHYv0Kr3cFSAA0J-GkPPq7iZcPIHBg0DVGNOiJVtQdu-ySu2uJ5&apiKey=fake-api-key"}}
+[info] i  To verify the email address s1234@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=FtiVUT0khB-AYHGOmYCooDwCl-m432WOLHR1RvNk9oOhNWaOsVM8Zw&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s1234@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=FtiVUT0khB-AYHGOmYCooDwCl-m432WOLHR1RvNk9oOhNWaOsVM8Zw&apiKey=fake-api-key"}}
+[info] i  To verify the email address s1234@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=ZFIfEuSNPT0R_T2_qn5V1o7jlcnI51ApAfc4L9R2o755SO9aLp1bsK&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s1234@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=ZFIfEuSNPT0R_T2_qn5V1o7jlcnI51ApAfc4L9R2o755SO9aLp1bsK&apiKey=fake-api-key"}}
+[info] i  To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=fRxgLkmz24xadY9ElMD_cc2MZZeAIBOIgXDJwvVmVyM01SSE1d7c3D&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=fRxgLkmz24xadY9ElMD_cc2MZZeAIBOIgXDJwvVmVyM01SSE1d7c3D&apiKey=fake-api-key"}}
+[info] i  To verify the email address s9874987@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=RN96iLPK_Po7yva7VqvwJuB-1Z6GlolnuFz9JjxGVv6C6gzQYRweX8&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s9874987@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=RN96iLPK_Po7yva7VqvwJuB-1Z6GlolnuFz9JjxGVv6C6gzQYRweX8&apiKey=fake-api-key"}}
+[info] i  To verify the email address s9874987@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=m3xVCCYIdknVqczIwaNhErBM2BlzSpVQIA46AgrQzNghasEVztX_Nb&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s9874987@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=m3xVCCYIdknVqczIwaNhErBM2BlzSpVQIA46AgrQzNghasEVztX_Nb&apiKey=fake-api-key"}}
+[info] i  To verify the email address weioiwoe@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=8UJYYSezqcLqAxsjEWYE58VGQ41cYQYx8gTaOYdqLfNPEZ7asFCeP3&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address weioiwoe@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=8UJYYSezqcLqAxsjEWYE58VGQ41cYQYx8gTaOYdqLfNPEZ7asFCeP3&apiKey=fake-api-key"}}
+[info] i  To verify the email address s0987@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=ERzoDYHvpLE8V9m4let4ANXjEXA9dV2Z_C8xKJ_NVFbfjBH81g5lHj&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s0987@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=ERzoDYHvpLE8V9m4let4ANXjEXA9dV2Z_C8xKJ_NVFbfjBH81g5lHj&apiKey=fake-api-key"}}
+[info] i  To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=6hGcykRFh6T6nq-59bsYP_-IDcV1nAhvlFLjZrux-f7WQaSDZF6dBb&apiKey=fake-api-key {"metadata":{"emulator":{"name":"auth"},"message":"To verify the email address s2284806@ed.ac.uk, follow this link: http://127.0.0.1:9099/emulator/action?mode=verifyEmail&lang=en&oobCode=6hGcykRFh6T6nq-59bsYP_-IDcV1nAhvlFLjZrux-f7WQaSDZF6dBb&apiKey=fake-api-key"}}
