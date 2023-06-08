@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 // import { UserType } from "../types/UserType";
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
     displayName: '',
@@ -26,6 +27,7 @@ export const userSlice = createSlice({
 export const { login, logout } = userSlice.actions;
 
 export const signUp = (email, displayName, password) => async (dispatch) => {
+    const navigate = useNavigate();
     try {
         createUserWithEmailAndPassword(auth, email, password)
         .then(() => {
@@ -33,6 +35,7 @@ export const signUp = (email, displayName, password) => async (dispatch) => {
                 if (user) {
                     sendEmailVerification(auth.currentUser);
                     alert("Verification email sent. Check your mailbox!")
+                    navigate('/')
                 } else {
                     alert("User doesn't exist")
                 }
@@ -66,5 +69,6 @@ export const signUp = (email, displayName, password) => async (dispatch) => {
         alert(error.message)
     }
 }
+
 
 export default userSlice.reducer;
